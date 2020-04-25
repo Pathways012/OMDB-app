@@ -5,7 +5,8 @@
     <string name="signOutText">Sign out</string>
     <string name="continueText">Continue</string>
     <string name="contentDescription">Background image for login screen</string>
-
     <string name="action_settings">Settings</string>
     <string name="title_activity_search_results">SearchResultsActivity</string>
+    <string name="watchlistTitle">Your Watchlist</string>
+    <string name="searchButtonText">Search</string>
 </resources>
