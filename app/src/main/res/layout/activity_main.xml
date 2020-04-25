@@ -24,13 +24,10 @@
         android:layout_height="wrap_content"
         android:hint="@string/passwordHint" />
 
-    <Button
-        android:id="@+id/loginButton"
-        android:onClick="loginFunction"
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="@string/loginButtonText" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
 
