@@ -3,6 +3,7 @@ package com.example.mobilefinalproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     ImageView imageView;
     TextView name, email, id;
     Button signOut;
+    Button continueButton;
     GoogleSignInClient mGoogleSignInClient;
 
     @Override
@@ -42,15 +44,27 @@ public class LoginActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         name = findViewById(R.id.textName);
         email = findViewById(R.id.textEmail);
-        id = findViewById(R.id.textId);
-        signOut = findViewById(R.id.button);
+        signOut = findViewById(R.id.signOutButton);
+        continueButton = findViewById(R.id.continueButton);
 
         signOut.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 switch (v.getId()) {
-                    case R.id.button:
+                    case R.id.signOutButton:
                         signOut();
+                        break;
+                }
+            }
+        });
+
+        continueButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                switch (v.getId()) {
+                    case R.id.continueButton:
+                        Intent intent = new Intent(LoginActivity.this, WatchlistActivity.class);
+                        startActivity(intent);
                         break;
                 }
             }
@@ -60,12 +74,10 @@ public class LoginActivity extends AppCompatActivity {
         if (acct != null) {
             String personName = acct.getDisplayName();
             String personEmail = acct.getEmail();
-            String personId = acct.getId();
             Uri personPhoto = acct.getPhotoUrl();
 
             name.setText(personName);
             email.setText(personEmail);
-            id.setText(personId);
             Glide.with(this).load(String.valueOf(personPhoto)).into(imageView);     //use Glide to show the person's photo from a URL?
         }
     }

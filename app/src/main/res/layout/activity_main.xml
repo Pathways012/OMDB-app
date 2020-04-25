@@ -1,33 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical" >
 
     <ImageView
         android:id="@+id/loginScreenImage"
-        android:src="@drawable/matrix_numbers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top"
-        android:layout_weight="1"/>
-
-    <EditText
-        android:id="@+id/usernameText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/usernameHint" />
-
-    <EditText
-        android:id="@+id/passwordText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/passwordHint" />
+        android:src="@drawable/matrix_numbers"
+        android:scaleType="centerCrop"/>
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
-</LinearLayout>
+</FrameLayout>
 
