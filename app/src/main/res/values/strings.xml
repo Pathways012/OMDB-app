@@ -9,4 +9,6 @@
     <string name="title_activity_search_results">SearchResultsActivity</string>
     <string name="watchlistTitle">Your Watchlist</string>
     <string name="searchButtonText">Search</string>
+    <string name="searchActivityText">Search movies and shows</string>
+    <string name="searchHint">Search OMDB...</string>
 </resources>

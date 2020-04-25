@@ -5,9 +5,39 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/testText"
+        android:id="@+id/searchText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SearchActivity"/>
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/searchActivityText"
+        android:textSize="25sp"
+        android:textColor="#FFFFFF"
+        android:background="@android:color/holo_green_dark"
+        />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1">
+
+    <EditText
+        android:id="@+id/userInput"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/searchHint"
+        android:gravity="center"
+        android:autofillHints="reeeeee" />
+
+    <Button
+        android:id="@+id/searchResultsButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/searchButtonText"
+        android:textSize="25sp"
+        android:gravity="center"
+        />
+    </LinearLayout>
 
 </LinearLayout>
