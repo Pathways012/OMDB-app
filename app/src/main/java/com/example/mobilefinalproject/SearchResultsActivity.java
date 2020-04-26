@@ -22,10 +22,8 @@ public class SearchResultsActivity extends AppCompatActivity {
     TextView textView;
     ImageView imageView;
     String url;
-    String apikey = "ef8f6b02";
     String title = null;
     String posterUrl = null;
-    String testUrl = "https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +55,7 @@ public class SearchResultsActivity extends AppCompatActivity {
                                 posterUrl = search.optString("Poster", "No poster found");
                                 Log.i("title", title);
                                 Log.i("posterUrl", posterUrl);
+                                //Insert code here to add the title and poster to a custom list item in a ListView
                                 textView.setText(title);
                                 Glide.with(SearchResultsActivity.this).load(posterUrl).into(imageView);
                             }

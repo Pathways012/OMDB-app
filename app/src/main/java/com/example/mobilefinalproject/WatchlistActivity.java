@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WatchlistActivity extends AppCompatActivity {
-    ListView watchlist;
-    List arrayList;
-    ArrayAdapter adapter;
+    //ListView watchlist;
+    //List arrayList;
+    //ArrayAdapter adapter;
     Button searchButton;
 
 
@@ -26,8 +26,19 @@ public class WatchlistActivity extends AppCompatActivity {
 
         searchButton = findViewById(R.id.searchButton);
 
-        watchlist = (ListView)findViewById(R.id.watchlist);
-        arrayList = new ArrayList();
+        //watchlist = findViewById(R.id.watchlist);
+
+        ListView list = findViewById(R.id.watchlist);
+        ArrayList<SubjectData> arrayList = new ArrayList<SubjectData>();
+        arrayList.add(new SubjectData("JAVA", "https://www.tutorialspoint.com/java/",             "https://www.tutorialspoint.com/java/images/java-mini-logo.jpg"));
+        arrayList.add(new SubjectData("Python", "https://www.tutorialspoint.com/python/", "https://www.tutorialspoint.com/python/images/python-mini.jpg"));
+        arrayList.add(new SubjectData("Javascript", "https://www.tutorialspoint.com/javascript/", "https://www.tutorialspoint.com/javascript/images/javascript-mini-logo.jpg"));
+        arrayList.add(new SubjectData("Cprogramming", "https://www.tutorialspoint.com/cprogramming/", "https://www.tutorialspoint.com/cprogramming/images/c-mini-logo.jpg"));
+        arrayList.add(new SubjectData("Cplusplus", "https://www.tutorialspoint.com/cplusplus/", "https://www.tutorialspoint.com/cplusplus/images/cpp-mini-logo.jpg"));
+        arrayList.add(new SubjectData("Android", "https://www.tutorialspoint.com/android/", "https://www.tutorialspoint.com/android/images/android-mini-logo.jpg"));
+        CustomAdapter customAdapter = new CustomAdapter(this, arrayList);
+        list.setAdapter(customAdapter);
+        /*arrayList = new ArrayList();
 
         arrayList.add("Test Item 1");
         arrayList.add("Test Item 2");
@@ -51,7 +62,7 @@ public class WatchlistActivity extends AppCompatActivity {
         arrayList.add("Test Item 20");
 
         adapter = new ArrayAdapter(WatchlistActivity.this, android.R.layout.simple_list_item_1, arrayList);
-        watchlist.setAdapter(adapter);
+        watchlist.setAdapter(adapter);*/
 
         searchButton.setOnClickListener(new View.OnClickListener(){
             @Override
