@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
-//import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 class CustomAdapter implements ListAdapter {
@@ -19,6 +18,7 @@ class CustomAdapter implements ListAdapter {
         this.arrayList=arrayList;
         this.context=context;
     }
+
     @Override
     public boolean areAllItemsEnabled() {
         return false;
@@ -77,6 +77,14 @@ class CustomAdapter implements ListAdapter {
     @Override
     public int getViewTypeCount() {
         return arrayList.size();
+        //return 1;
+        /*int count;
+        if (arrayList.size() > 0) {
+            count = getCount();
+        } else {
+            count = 1;
+        }
+        return count;*/
     }
     @Override
     public boolean isEmpty() {
