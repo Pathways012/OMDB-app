@@ -1,6 +1,7 @@
 package com.example.mobilefinalproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,9 +39,7 @@ class CustomAdapter implements ListAdapter {
         return arrayList.size();
     }
     @Override
-    public Object getItem(int position) {
-        return position;
-    }
+    public Object getItem(int position) { return position; }
     @Override
     public long getItemId(int position) {
         return position;

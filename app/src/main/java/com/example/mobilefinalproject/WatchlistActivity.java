@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -31,6 +32,7 @@ public class WatchlistActivity extends AppCompatActivity {
         arrayList.add(new SubjectData("Cplusplus",  "https://www.tutorialspoint.com/cplusplus/images/cpp-mini-logo.jpg"));
         arrayList.add(new SubjectData("Android", "https://www.tutorialspoint.com/android/images/android-mini-logo.jpg"));
         arrayList.add(new SubjectData("Test Object", "https://m.media-amazon.com/images/M/MV5BMjEwMzMxODIzOV5BMl5BanBnXkFtZTgwNzg3OTAzMDI@._V1_SX300.jpg"));
+
         CustomAdapter customAdapter = new CustomAdapter(this, arrayList);
         list.setAdapter(customAdapter);
 
@@ -43,6 +45,26 @@ public class WatchlistActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                 }
+            }
+        });
+
+        // Set an item click listener for ListView
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Get the selected item text from ListView
+                //String selectedItem = (String) parent.getItemAtPosition(position);
+
+                // Display the selected item text on TextView
+                //tv.setText("Your favorite : " + selectedItem);
+
+                SubjectData selectedItem = (SubjectData) parent.getItemAtPosition(position);
+
+                Intent intent = new Intent(WatchlistActivity.this, SelectedResultActivity.class);
+                //based on item add info to intent
+                String message = selectedItem.SubjectName;
+                intent.putExtra("extraMessage", message);
+                startActivity(intent);
             }
         });
     }

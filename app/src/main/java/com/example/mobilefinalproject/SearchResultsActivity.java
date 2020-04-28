@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,6 +30,7 @@ public class SearchResultsActivity extends AppCompatActivity {
     ArrayList<SubjectData> arrayList;
     ListView list;
     JSONObject search;
+    CustomAdapter customAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +63,7 @@ public class SearchResultsActivity extends AppCompatActivity {
                         try {
                             JSONArray values = response.getJSONArray("Search");
 
-                            for (int i = 0; i < values.length(); i++) {
+                            for (int i = 0; i < 6/*values.length()*/; i++) {
                                 search = values.getJSONObject(i);
                                 title = search.optString("Title", "No title found");
                                 posterUrl = search.optString("Poster", "No poster found");
@@ -72,7 +75,7 @@ public class SearchResultsActivity extends AppCompatActivity {
                                 //goes wrong after 6 items have been added, the API always returns 10 items.
                                 if(i == 0){
                                     arrayList.add(new SubjectData(title, posterUrl));
-                                    CustomAdapter customAdapter = new CustomAdapter(SearchResultsActivity.this, arrayList);
+                                    customAdapter = new CustomAdapter(SearchResultsActivity.this, arrayList);
                                     list.setAdapter(customAdapter);
                                 }
                                 else
@@ -93,5 +96,21 @@ public class SearchResultsActivity extends AppCompatActivity {
                 });
         // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
+
+
+        //this function is still a work in progress.
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
+                SubjectData item = (SubjectData) adapter.getItemAtPosition(position);
+
+                Intent intent = new Intent(SearchResultsActivity.this, SelectedResultActivity.class);
+                //based on item add info to intent
+                title = item.SubjectName;
+                intent.putExtra("extraMessage", title);
+                startActivity(intent);
+            }
+        });
     }
 }
