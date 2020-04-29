@@ -13,4 +13,5 @@
     <string name="searchHint">Search OMDB...</string>
     <string name="resultsText">Search results</string>
     <string name="moviePoster">Movie poster</string>
+    <string name="addToWatchlistButtonText">Add to watchlist</string>
 </resources>

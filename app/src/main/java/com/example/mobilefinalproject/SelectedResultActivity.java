@@ -5,19 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SelectedResultActivity extends AppCompatActivity {
-    TextView results;
+    TextView movieInfo1;
+    TextView movieInfo2;
+    ImageView moviePoster;
     JSONObject search;
     String url;
     String title = null;
@@ -30,10 +34,16 @@ public class SelectedResultActivity extends AppCompatActivity {
 
         //get the intent that started this activity and the title string
         Intent intent = getIntent();
-        title = intent.getExtras().getString("extraMessage");
+        title = intent.getExtras().getString("title");
+        posterUrl = intent.getExtras().getString("posterUrl");
 
-        results = findViewById(R.id.movieInfo1);
-        results.setText(title);
+        moviePoster = findViewById(R.id.moviePoster);
+        Glide.with(SelectedResultActivity.this)
+                .load(posterUrl)
+                .into(moviePoster);
+
+        movieInfo1 = findViewById(R.id.movieInfo1);
+        movieInfo1.setText(title);
 
         url = "https://www.omdbapi.com/?apikey=ef8f6b02&t="+title;
 
