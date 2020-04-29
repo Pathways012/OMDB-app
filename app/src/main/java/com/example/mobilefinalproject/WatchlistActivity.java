@@ -1,8 +1,10 @@
 package com.example.mobilefinalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,7 +26,14 @@ public class WatchlistActivity extends AppCompatActivity {
 
         searchButton = findViewById(R.id.searchButton);
 
-        ListView list = findViewById(R.id.watchlist);
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "watchlistDatabase").build();
+
+        Movie testMovie1 ("Despicable Me", "https://m.media-amazon.com/images/M/MV5BMTY3NjY0MTQ0Nl5BMl5BanBnXkFtZTcwMzQ2MTc0Mw@@._V1_SX300.jpg");
+        //testMovie1.title = "Deadpool";
+        //testMovie1.posterUrl = "https://m.media-amazon.com/images/M/MV5BMTY3NjY0MTQ0Nl5BMl5BanBnXkFtZTcwMzQ2MTc0Mw@@._V1_SX300.jpg";
+
+        /*ListView list = findViewById(R.id.watchlist);
         ArrayList<SubjectData> arrayList = new ArrayList<SubjectData>();
         arrayList.add(new SubjectData("JAVA",              "https://www.tutorialspoint.com/java/images/java-mini-logo.jpg"));
         arrayList.add(new SubjectData("Python",  "https://www.tutorialspoint.com/python/images/python-mini.jpg"));
@@ -35,7 +44,7 @@ public class WatchlistActivity extends AppCompatActivity {
         arrayList.add(new SubjectData("Test Object", "https://m.media-amazon.com/images/M/MV5BMjEwMzMxODIzOV5BMl5BanBnXkFtZTgwNzg3OTAzMDI@._V1_SX300.jpg"));
 
         CustomAdapter customAdapter = new CustomAdapter(this, arrayList);
-        list.setAdapter(customAdapter);
+        list.setAdapter(customAdapter);*/
 
         searchButton.setOnClickListener(new View.OnClickListener(){
             @Override

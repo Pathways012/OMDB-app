@@ -37,13 +37,6 @@ public class SearchResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
 
-        /*
-        //Make a ListView with custom items
-        ListView list = findViewById(R.id.resultsList);
-        arrayList = new ArrayList<SubjectData>();
-        CustomAdapter customAdapter = new CustomAdapter(this, arrayList);
-        list.setAdapter(customAdapter);*/
-
         list = findViewById(R.id.resultsList);
         arrayList = new ArrayList<SubjectData>();
 
