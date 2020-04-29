@@ -16,19 +16,18 @@
 
     <ImageView
         android:id="@+id/moviePoster"
-        android:src="@drawable/matrix_numbers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/moviePoster"
         android:layout_weight="1"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
+
        />
 
     <TextView
         android:id="@+id/movieInfo1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TEST TEXT ONE"
         android:textSize="20sp"
         android:layout_weight="1"
         android:padding="5dp"
@@ -48,7 +47,6 @@
             android:id="@+id/movieInfo2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TEST TEXT TWO"
             android:textSize="20sp"
             android:padding="5dp"
             android:layout_weight="4"
