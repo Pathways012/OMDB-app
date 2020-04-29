@@ -16,9 +16,9 @@ public class SelectedResultActivity extends AppCompatActivity {
 
         //get the intent that started this activity and the title string
         Intent intent = getIntent();
-        String title = intent.getExtras().getString("extraMessage");
+        //String title = intent.getExtras().getString("extraMessage");
 
         results = findViewById(R.id.results);
-        results.setText(title);
+        //results.setText(title);
     }
 }

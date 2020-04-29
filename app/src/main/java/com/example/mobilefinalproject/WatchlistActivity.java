@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,26 +46,6 @@ public class WatchlistActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                 }
-            }
-        });
-
-        // Set an item click listener for ListView
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Get the selected item text from ListView
-                //String selectedItem = (String) parent.getItemAtPosition(position);
-
-                // Display the selected item text on TextView
-                //tv.setText("Your favorite : " + selectedItem);
-
-                SubjectData selectedItem = (SubjectData) parent.getItemAtPosition(position);
-
-                Intent intent = new Intent(WatchlistActivity.this, SelectedResultActivity.class);
-                //based on item add info to intent
-                String message = selectedItem.SubjectName;
-                intent.putExtra("extraMessage", message);
-                startActivity(intent);
             }
         });
     }

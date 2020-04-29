@@ -101,7 +101,7 @@ public class SearchResultsActivity extends AppCompatActivity {
         //this function is still a work in progress.
         list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
-            @Override
+
             public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
                 SubjectData item = (SubjectData) adapter.getItemAtPosition(position);
 

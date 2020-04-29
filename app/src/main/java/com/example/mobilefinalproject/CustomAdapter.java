@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
@@ -22,7 +24,7 @@ class CustomAdapter implements ListAdapter {
 
     @Override
     public boolean areAllItemsEnabled() {
-        return false;
+        return true;
     }
     @Override
     public boolean isEnabled(int position) {
@@ -50,7 +52,7 @@ class CustomAdapter implements ListAdapter {
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        SubjectData subjectData=arrayList.get(position);
+        final SubjectData subjectData=arrayList.get(position);              //made final for onClick method
         if(convertView==null) {
             LayoutInflater layoutInflater = LayoutInflater.from(context);
             convertView=layoutInflater.inflate(R.layout.list_row, null);
@@ -58,6 +60,11 @@ class CustomAdapter implements ListAdapter {
                 @Override
                 public void onClick(View v) {
                     //do a search using the title of the item that was selected
+                    Toast.makeText(context, "Listview item clicked", Toast.LENGTH_LONG).show(); //IT FUCKING WORKED!
+                    Intent intent = new Intent(context, SelectedResultActivity.class);
+                    String message = subjectData.SubjectName;   //made this work by making subjectData final above
+                    intent.putExtra("extraMessage", message);
+                    context.startActivity(intent);
                 }
             });
             TextView tittle=convertView.findViewById(R.id.title);
@@ -69,6 +76,7 @@ class CustomAdapter implements ListAdapter {
         }
         return convertView;
     }
+
     @Override
     public int getItemViewType(int position) {
         return position;
@@ -76,14 +84,6 @@ class CustomAdapter implements ListAdapter {
     @Override
     public int getViewTypeCount() {
         return arrayList.size();
-        //return 1;
-        /*int count;
-        if (arrayList.size() > 0) {
-            count = getCount();
-        } else {
-            count = 1;
-        }
-        return count;*/
     }
     @Override
     public boolean isEmpty() {
