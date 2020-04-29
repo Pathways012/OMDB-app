@@ -55,9 +55,10 @@
         <Button
             android:id="@+id/addToWatchlistButton"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="50dp"
             android:text="@string/addToWatchlistButtonText"
             android:textSize="25sp"
+            android:onClick="addToWatchlist"
             android:layout_weight="1"/>
 
     </LinearLayout>

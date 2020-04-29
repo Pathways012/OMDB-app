@@ -60,7 +60,7 @@ class CustomAdapter implements ListAdapter {
                 @Override
                 public void onClick(View v) {
                     //do a search using the title of the item that was selected
-                    Toast.makeText(context, "Listview item clicked", Toast.LENGTH_LONG).show(); //IT FUCKING WORKED!
+                    //Toast.makeText(context, "Listview item clicked", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(context, SelectedResultActivity.class);
                     String title = subjectData.SubjectName;   //made this work by making subjectData final above
                     intent.putExtra("title", title);

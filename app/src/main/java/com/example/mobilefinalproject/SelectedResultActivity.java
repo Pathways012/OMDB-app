@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -43,6 +45,7 @@ public class SelectedResultActivity extends AppCompatActivity {
                 .into(moviePoster);
 
         movieInfo1 = findViewById(R.id.movieInfo1);
+        movieInfo2 = findViewById(R.id.movieInfo2);
         movieInfo1.setText(title);
 
         url = "https://www.omdbapi.com/?apikey=ef8f6b02&t="+title;
@@ -54,20 +57,25 @@ public class SelectedResultActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         Log.i("VOLLEY", response.toString());   //put the response into the log to check it was received
 
-                        try {
-                            JSONArray values = response.getJSONArray("Search");
+                        String movieInfo1Data;
+                        String title = response.optString("Title", "No title found");
+                        String rated = response.optString("Rated", "No rating found");
+                        String released = response.optString("Released", "No release found");
+                        String runtime = response.optString("Runtime", "No runtime found");
+                        String genres = response.optString("Genre", "No genres found");
 
-                            for (int i = 0; i < 6/*values.length()*/; i++) {
-                                search = values.getJSONObject(i);
-                                title = search.optString("Title", "No title found");
-                                posterUrl = search.optString("Poster", "No poster found");
-                                Log.i("title", title);
-                                Log.i("posterUrl", posterUrl);
-                            }
-                        }
-                        catch(JSONException e) {
-                            e.printStackTrace();
-                        }
+                        String movieInfo2Data;
+                        String language = response.optString("Language", "No language found");
+                        String awards = response.optString("Awards", "No awards found");
+                        String plot = response.optString("Plot", "No plot found");
+                        String imdbRating = response.optString("imdbRating", "No rating found");
+
+                        movieInfo1Data = "Title: "+title+"\n"+"Rated: "+rated+"\nReleased: "+released+"\nRuntime: "+runtime+"\nGenres: "+genres;
+                        movieInfo2Data = "Language: "+language+"\nAwards: "+awards+"\nPlot: "+plot+"\nIMDB Rating: "+imdbRating;
+
+                        movieInfo1.setText(movieInfo1Data);
+                        movieInfo2.setText(movieInfo2Data);
+                        //Rito wanted me to delete the "catch" block
                     }
 
                 }, new Response.ErrorListener() {
@@ -79,5 +87,10 @@ public class SelectedResultActivity extends AppCompatActivity {
                 });
         // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
+    }
+
+    public void addToWatchlist(View view)
+    {
+        Toast.makeText(SelectedResultActivity.this, "Item added to watchlist", Toast.LENGTH_LONG).show();
     }
 }
