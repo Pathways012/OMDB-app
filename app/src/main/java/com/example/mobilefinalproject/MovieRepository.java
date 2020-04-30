@@ -1,37 +1,36 @@
 package com.example.mobilefinalproject;
 
-import android.app.Application;
 
-import androidx.lifecycle.LiveData;
+import android.content.Context;
+import android.os.AsyncTask;
 
-import java.util.List;
+import androidx.room.Room;
 
-class MovieRepository {
+public class MovieRepository {
 
-    private MovieDAO movieDao;
-    private LiveData<List<Movie>> mAllMovies;
+    private String DB_NAME = "db_task";
 
-    // Note that in order to unit test the WordRepository, you have to remove the Application
-    // dependency. This adds complexity and much more code, and this sample is not about testing.
-    // See the BasicSample in the android-architecture-components repository at
-    // https://github.com/googlesamples
-    MovieRepository(Application application) {
-        AppDatabase db = AppDatabase.getDatabase(application);
-        movieDao = db.movieDao();
-        mAllMovies = movieDao.getAll();
+    private AppDatabase watchlistDatabase;
+    public MovieRepository(Context context) {
+        watchlistDatabase = Room.databaseBuilder(context, AppDatabase.class, DB_NAME).build();
     }
 
-    // Room executes all queries on a separate thread.
-    // Observed LiveData will notify the observer when the data has changed.
-    LiveData<List<Movie>> getAll() {
-        return mAllMovies;
+    public void insertMovie(String title,
+                           String posterUrl) {
+
+        Movie movie = new Movie();
+        movie.setTitle(title);
+        movie.setPosterUrl(posterUrl);
+        watchlistDatabase.daoAccess().insertMovie(movie);
     }
 
-    // You must call this on a non-UI thread or your app will throw an exception. Room ensures
-    // that you're not doing any long running operations on the main thread, blocking the UI.
-    void insert(Movie movie) {
-        AppDatabase.databaseWriteExecutor.execute(() -> {
-            movieDao.insertMovie(movie);
-        });
+    public void deleteMovie(final Movie movie) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                watchlistDatabase.daoAccess().deleteMovie(movie);
+                return null;
+            }
+        }.execute();
     }
 }

@@ -16,8 +16,8 @@ public interface MovieDAO {
     @Insert
     public void insertMovie(Movie movie);
 
-    //@Query("DELETE FROM watchlistTable WHERE title = 'title'")
-    //public void deleteMovie(Movie movie);
+    @Delete
+    void deleteMovie(Movie movie);
 
     @Query("DELETE FROM watchlistTable")
     public void deleteAll();

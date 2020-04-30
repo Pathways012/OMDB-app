@@ -18,6 +18,8 @@ import java.util.List;
 
 public class WatchlistActivity extends AppCompatActivity {
     Button searchButton;
+    MovieRepository movieRepository;
+    CustomAdapter customAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,25 +28,26 @@ public class WatchlistActivity extends AppCompatActivity {
 
         searchButton = findViewById(R.id.searchButton);
 
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "watchlistDatabase").build();
+        movieRepository = new MovieRepository(getApplicationContext());
+        //AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                //AppDatabase.class, "watchlistDatabase").build();
 
         //Movie testMovie1 ("Despicable Me", "https://m.media-amazon.com/images/M/MV5BMTY3NjY0MTQ0Nl5BMl5BanBnXkFtZTcwMzQ2MTc0Mw@@._V1_SX300.jpg");
         //testMovie1.title = "Deadpool";
         //testMovie1.posterUrl = "https://m.media-amazon.com/images/M/MV5BMTY3NjY0MTQ0Nl5BMl5BanBnXkFtZTcwMzQ2MTc0Mw@@._V1_SX300.jpg";
 
-        /*ListView list = findViewById(R.id.watchlist);
+        ListView list = findViewById(R.id.watchlist);
         ArrayList<SubjectData> arrayList = new ArrayList<SubjectData>();
-        arrayList.add(new SubjectData("JAVA",              "https://www.tutorialspoint.com/java/images/java-mini-logo.jpg"));
+        /*arrayList.add(new SubjectData("JAVA",              "https://www.tutorialspoint.com/java/images/java-mini-logo.jpg"));
         arrayList.add(new SubjectData("Python",  "https://www.tutorialspoint.com/python/images/python-mini.jpg"));
         arrayList.add(new SubjectData("Javascript",  "https://www.tutorialspoint.com/javascript/images/javascript-mini-logo.jpg"));
         arrayList.add(new SubjectData("Cprogramming",  "https://www.tutorialspoint.com/cprogramming/images/c-mini-logo.jpg"));
         arrayList.add(new SubjectData("Cplusplus",  "https://www.tutorialspoint.com/cplusplus/images/cpp-mini-logo.jpg"));
         arrayList.add(new SubjectData("Android", "https://www.tutorialspoint.com/android/images/android-mini-logo.jpg"));
         arrayList.add(new SubjectData("Test Object", "https://m.media-amazon.com/images/M/MV5BMjEwMzMxODIzOV5BMl5BanBnXkFtZTgwNzg3OTAzMDI@._V1_SX300.jpg"));
-
-        CustomAdapter customAdapter = new CustomAdapter(this, arrayList);
-        list.setAdapter(customAdapter);*/
+        */
+        customAdapter = new CustomAdapter(this, arrayList);
+        list.setAdapter(customAdapter);
 
         searchButton.setOnClickListener(new View.OnClickListener(){
             @Override

@@ -29,6 +29,7 @@ public class SelectedResultActivity extends AppCompatActivity {
     String title = null;
     String posterUrl = null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,5 +93,7 @@ public class SelectedResultActivity extends AppCompatActivity {
     public void addToWatchlist(View view)
     {
         Toast.makeText(SelectedResultActivity.this, "Item added to watchlist", Toast.LENGTH_LONG).show();
+        Movie movie = new Movie(title, posterUrl);
+        //insertMovie(movie);
     }
 }

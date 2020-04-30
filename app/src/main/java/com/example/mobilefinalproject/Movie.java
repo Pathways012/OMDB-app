@@ -5,6 +5,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.NotNull;
+
 @Entity(tableName = "watchlistTable")
 public class Movie
 {
@@ -22,13 +24,21 @@ public class Movie
         this.mPosterUrl = posterUrl;
     }
 
+    public Movie ()
+    {
+        this.mTitle = null;
+        this.mPosterUrl = null;
+    }
+
     public String getTitle()
     {
         return this.mTitle;
     }
+    public void setTitle(String title) {this.mTitle = title;}
 
     public String getPosterUrl()
     {
         return this.mPosterUrl;
     }
+    public void setPosterUrl(String posterUrl){this.mPosterUrl = posterUrl;}
 }
