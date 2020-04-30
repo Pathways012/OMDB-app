@@ -47,6 +47,7 @@ public abstract class AppDatabase extends RoomDatabase
                 MovieDAO dao = INSTANCE.movieDao();
                 dao.deleteAll();
 
+                //Prepopulate the database with two movies for testing purposes
                 Movie movie = new Movie("Despicable me","https://m.media-amazon.com/images/M/MV5BMTY3NjY0MTQ0Nl5BMl5BanBnXkFtZTcwMzQ2MTc0Mw@@._V1_SX300.jpg");
                 dao.insertMovie(movie);
                 movie = new Movie("Deadpool", "https://m.media-amazon.com/images/M/MV5BYzE5MjY1ZDgtMTkyNC00MTMyLThhMjAtZGI5OTE1NzFlZGJjXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg");
